@@ -84,5 +84,40 @@ get ('/home/operator/cities/:city_id')do
 
   erb(:city)
 
+end
 
+#this shows the edit page for a specific train
+
+get('/home/operator/trains/:train_id/edit') do
+  @train = Train.find(params[:train_id].to_i())
+  erb(:edit_train)
+end
+
+#this shows the edit page for a specific city
+
+get('/home/operator/cities/:city_id/edit') do
+  @city = City.find(params[:city_id].to_i())
+  erb(:edit_city)
+end
+
+#This will allow the operator to edit a train
+
+patch('/home/operators/trains/:train_id')do
+  @train = Train.find(params[:train_id].to_i())
+  @train.update(params[:name])
+  @trains = Train.all
+  @cities = City.all
+  erb(:operator)
+
+end
+
+#This will allow the operator to delete a train
+
+delete('/home/operators/trains/:train_id')do
+  @train = Train.find(params[:train_id].to_i())
+  @train.delete()
+  @trains = Train.all
+  @cities = City.all
+
+  erb(:operator)
 end
