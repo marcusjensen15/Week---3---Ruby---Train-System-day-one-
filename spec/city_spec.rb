@@ -65,6 +65,16 @@ describe('find') do
   end
 end
 
+describe('.clear') do
+it("clears all cities") do
+  city = City.new({:name => "Giant Steps", :city_id => nil})
+  city.save()
+  city2 = City.new({:name => "Hi", :city_id => nil})
+  city2.save()
+  City.clear()
+  expect(City.all).to(eq([]))
+end
+end
 
 
 

@@ -1,0 +1,30 @@
+<h1>Operator</h1>
+
+  <h3>Here is a list of Cities:</h3>
+
+
+
+
+
+  <h3>Here is a list of Trains:</h3>
+
+  <% if @trains %>
+  <ul>
+    <% @trains.each do |train| %>
+    <li><a href="/home/operator/<%= train.train_id %>"><strong><%= train.name %></strong> </li>
+    <% end %>
+  </ul>
+  <% else %>
+  <p>There are currently no Trains to display.</p>
+  <% end %>
+
+
+
+
+
+
+<a href="/train/new">Add a new Train</a>
+</br>
+</br>
+
+<a href="/city/new">Add a new City</a>

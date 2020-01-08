@@ -65,6 +65,16 @@ describe('find') do
   end
 end
 
+describe('.clear') do
+it("clears all trains") do
+  train = Train.new({:name => "Giant Steps", :train_id => nil})
+  train.save()
+  train2 = Train.new({:name => "Hi", :train_id => nil})
+  train2.save()
+  Train.clear()
+  expect(Train.all).to(eq([]))
+end
+end
 
 
 
