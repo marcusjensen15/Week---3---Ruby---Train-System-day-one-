@@ -2,7 +2,15 @@
 
   <h3>Here is a list of Cities:</h3>
 
-
+  <% if @cities %>
+    <ul>
+      <% @cities.each do |city| %>
+      <li><a href="/home/operator/cities/<%= city.city_id %>"><strong><%= city.name %></strong> </li>
+      <% end %>
+    </ul>
+    <% else %>
+    <p>There are currently no Cities to display.</p>
+  <% end %>
 
 
 
@@ -11,7 +19,7 @@
   <% if @trains %>
   <ul>
     <% @trains.each do |train| %>
-    <li><a href="/home/operator/<%= train.train_id %>"><strong><%= train.name %></strong> </li>
+    <li><a href="/home/operator/trains/<%= train.train_id %>"><strong><%= train.name %></strong> </li>
     <% end %>
   </ul>
   <% else %>
