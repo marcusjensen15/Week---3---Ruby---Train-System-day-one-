@@ -60,5 +60,11 @@ class Train
     end
   end
 
+  #untested method, might not have access
+    def delete_train_stops()
+      DB.exec("DELETE FROM stops WHERE train_name = '#{@name}';")
+
+    end
+
 
 end

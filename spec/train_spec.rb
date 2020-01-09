@@ -77,6 +77,25 @@ end
 end
 
 
+#method below may not be passing
+
+describe('delete_train_stops') do
+  it("allows the user to delete all of the stops for a given train") do
+
+    train = Train.new({:name => "Giant Steps", :train_id => nil})
+    train.save()
+    stop = Stop.new(:city_name => "Chicago", :train_name => "Giant Steps", :time => "12", :stop_id => nil)
+    stop.save()
+    stop3 = Stop.new(:city_name => "Chicago", :train_name => "Giant Steps", :time => "124", :stop_id => nil)
+    stop3.save()
+    stop2 = Stop.new(:city_name => "Chicagox", :train_name => "Hid", :time => "124", :stop_id => nil)
+    stop2.save()
+    train.delete_train_stops()
+    expect(Stop.all).to(eq([stop2]))
+  end
+end
+
+
 
 
 end

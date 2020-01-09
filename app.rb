@@ -120,9 +120,11 @@ end
 
 delete('/home/operators/trains/:train_id')do
   @train = Train.find(params[:train_id].to_i())
+  @train.delete_train_stops()
   @train.delete()
   @trains = Train.all
   @cities = City.all
+  @stops= Stop.all
 
   erb(:operator)
 end
@@ -142,9 +144,11 @@ end
 
 delete('/home/operators/cities/:city_id')do
   @city = City.find(params[:city_id].to_i())
+  @city.delete_city_stops()
   @city.delete()
   @trains = Train.all
   @cities = City.all
+  @stops= Stop.all
 
   erb(:operator)
 end

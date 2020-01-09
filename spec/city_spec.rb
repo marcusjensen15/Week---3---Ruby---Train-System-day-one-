@@ -77,7 +77,6 @@ end
 end
 
 
-#method below may not be passing
 
 describe('delete_city_stops') do
   it("allows the user to delete all of the stops for a given city") do
