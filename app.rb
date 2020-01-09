@@ -38,6 +38,7 @@ post ('/home/operator') do
       train.save()
       @trains = Train.all()
       @cities = City.all()
+      @stops = Stop.all()
     erb(:operator)
   elsif params[:city_name]
     name = params[:city_name]
@@ -45,6 +46,7 @@ post ('/home/operator') do
     city.save()
     @cities = City.all()
     @trains = Train.all()
+    @stops = Stop.all()
 
   erb(:operator)
   end
@@ -132,6 +134,7 @@ patch ('/home/operators/cities/:city_id') do
   @city.update(params[:name])
   @trains = Train.all
   @cities = City.all
+
   erb(:operator)
 end
 
@@ -183,5 +186,28 @@ get ('/home/operator/stops/:stop_id')do
   @stop = Stop.find(params[:stop_id].to_i())
 
   erb(:stop)
+
+end
+
+#This shows the edit stop page on the operator view
+
+get ('/home/operator/stops/:stop_id/edit') do
+  @stop = Stop.find(params[:stop_id].to_i())
+  @cities = City.all()
+  @trains = Train.all()
+
+  erb(:edit_stop)
+end
+
+#this will update a given stop
+
+patch ('/home/operators/stops/:stop_id') do
+
+  @stop = Stop.find(params[:stop_id].to_i())
+  @stop.update(params[:city_name],params[:train_name], params[:time])
+  @trains = Train.all
+  @cities = City.all
+  @stops = Stop.all()
+  erb(:operator)
 
 end
