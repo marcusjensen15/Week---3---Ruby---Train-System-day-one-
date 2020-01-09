@@ -20,7 +20,8 @@ class Stop
   DB.exec("DELETE FROM stops WHERE stop_id = #{@stop_id};")
   end
 
-#allows the user to delete all of the stops for a given city (not tested)
+#i dont think we will use delete_city_stops here. it will be a method within city
+
   def delete_city_stops()
     DB.exec("DELETE FROM stops WHERE city_name = '#{@city_name}';")
 

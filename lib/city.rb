@@ -66,6 +66,11 @@ class City
     end
   end
 
+#untested method, might not have access
+  def delete_city_stops()
+    DB.exec("DELETE FROM stops WHERE city_name = '#{@name}';")
+
+  end
 
 
 
