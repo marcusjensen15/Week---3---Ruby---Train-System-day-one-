@@ -142,3 +142,6 @@ delete('/home/operators/cities/:city_id')do
 
   erb(:operator)
 end
+
+
+#### Create a view similar to the operator view. List of trains and list of cities. click on a city and see trains that go to it. click on a train and see which cities it goes to.
