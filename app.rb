@@ -121,3 +121,24 @@ delete('/home/operators/trains/:train_id')do
 
   erb(:operator)
 end
+
+#This will allow the operator to edit a city
+
+patch ('/home/operators/cities/:city_id') do
+  @city = City.find(params[:city_id].to_i())
+  @city.update(params[:name])
+  @trains = Train.all
+  @cities = City.all
+  erb(:operator)
+end
+
+#This will allow the operator to delete a city
+
+delete('/home/operators/cities/:city_id')do
+  @city = City.find(params[:city_id].to_i())
+  @city.delete()
+  @trains = Train.all
+  @cities = City.all
+
+  erb(:operator)
+end
