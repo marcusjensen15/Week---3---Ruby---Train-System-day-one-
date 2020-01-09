@@ -1,0 +1,9 @@
+<h1>Stop Details</h1>
+
+<h4>Pickup Location: <%= @stop.city_name %></h4>
+<h5>Train Name: <%= @stop.train_name %></h5>
+<h5>Time: <%= @stop.time %></h5>
+
+
+<p><a href="/home/operator/stops/<%= @stop.stop_id %>/edit">Edit Stop</a></p>
+<a href="/home/operator">Return to Operator Home</a>

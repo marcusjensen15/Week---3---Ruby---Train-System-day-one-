@@ -1,1 +1,11 @@
-<h1>Rider</h1>
+<h1>Here is a list of available stops:</h1>
+
+  <% if @stops %>
+    <ul>
+      <% @stops.each do |stop| %>
+      <li><a href="/home/rider/stops/<%= stop.stop_id %>"><strong>City: <%= stop.city_name %> Train: <%= stop.train_name %> Time: <%= stop.time%> </strong> </li>
+      <% end %>
+    </ul>
+    <% else %>
+    <p>There are currently no Stops to display.</p>
+  <% end %>

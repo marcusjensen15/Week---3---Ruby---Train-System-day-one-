@@ -1,0 +1,31 @@
+<h1>Add a New Stop</h1>
+
+<form action="/home/rider" method="post">
+  <div class="form-group">
+    <select name = "train_name">
+      <%if @trains.any? %>
+      <% @trains.each do |train| %>
+      <option value = <%= train.name %>> <%= train.name%> </option>
+      <%end%>
+      <%else%>
+      <p> Please add trains </p>
+      <% end %>
+    </select>
+
+    <select name = "city_name">
+      <%if @cities.any? %>
+      <% @cities.each do |city| %>
+      <option value = <%= city.name %>> <%= city.name%> </option>
+      <%end%>
+      <%else%>
+      <p> Please add cities </p>
+      <% end %>
+    </select>
+
+    <input name="time" class="form-control" type="time" required>
+
+
+
+  </div>
+  <button type="submit" class="btn btn-primary">Add the Stop</button>
+</form>

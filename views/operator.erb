@@ -27,6 +27,18 @@
   <% end %>
 
 
+  <h3>Here is a list of Stops:</h3>
+
+  <% if @stops %>
+  <ul>
+    <% @stops.each do |stop| %>
+    <li><a href="/home/operator/stops/<%= stop.stop_id %>"><strong> City: <%= stop.city_name %>  Train: <%= stop.train_name %>  Time: <%= stop.time%></strong> </li>
+    <% end %>
+  </ul>
+  <% else %>
+  <p>There are currently no Stops to display.</p>
+  <% end %>
+
 
 
 
@@ -36,3 +48,6 @@
 </br>
 
 <a href="/city/new">Add a new City</a>
+</br>
+</br>
+<a href="/home/operator/newstop"> Add a new Stop </a>

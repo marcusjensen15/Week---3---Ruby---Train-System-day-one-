@@ -3,6 +3,7 @@ require('sinatra')
 require('sinatra/reloader')
 require('./lib/city')
 require('./lib/train')
+require('./lib/stop')
 require('pry')
 require("pg")
 
@@ -24,6 +25,7 @@ end
 get ('/home/operator') do
   @trains = Train.all
   @cities = City.all
+  @stops = Stop.all
   erb(:operator)
 end
 
@@ -60,8 +62,9 @@ get('/city/new') do
   erb(:new_city)
 end
 
-#this shows the rider view
+#this shows the rider view and all the stops
 get ('/home/rider') do
+  @stops = Stop.all
   erb(:rider)
 end
 
@@ -145,3 +148,40 @@ end
 
 
 #### Create a view similar to the operator view. List of trains and list of cities. click on a city and see trains that go to it. click on a train and see which cities it goes to.
+
+
+#This will allow the operator to see the new stops page
+
+get ('/home/operator/newstop')do
+@cities = City.all()
+@trains = Train.all()
+erb(:new_stop)
+end
+
+#This will post the new stop to the rider & operator page
+
+post ('/home/rider')do
+  if params[:train_name] && params[:city_name] && params[:time]
+    train_name = params[:train_name]
+    city_name = params[:city_name]
+    time = params[:time]
+    stop = Stop.new({:train_name => train_name, :city_name => city_name, :time => time, :stop_id => nil})
+    stop.save()
+    @stops = Stop.all()
+    erb(:rider)
+  else
+    @stops = Stop.all()
+    erb(:rider)
+
+  end
+end
+
+#This shows the specific stop page on the operator view
+
+get ('/home/operator/stops/:stop_id')do
+
+  @stop = Stop.find(params[:stop_id].to_i())
+
+  erb(:stop)
+
+end
