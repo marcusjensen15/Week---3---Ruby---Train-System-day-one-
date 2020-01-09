@@ -9,3 +9,29 @@
     <% else %>
     <p>There are currently no Stops to display.</p>
   <% end %>
+
+  <h3>Here is a list of Cities:</h3>
+
+  <% if @cities %>
+  <ul>
+    <% @cities.each do |city| %>
+    <li><a href="/home/operator/cities_trains/<%= city.city_id %>"><strong><%= city.name %></strong> </li>
+      <% end %>
+    </ul>
+    <% else %>
+    <p>There are currently no Cities to display.</p>
+    <% end %>
+
+
+
+    <h3>Here is a list of Trains:</h3>
+
+    <% if @trains %>
+    <ul>
+      <% @trains.each do |train| %>
+      <li><a href="/home/operator/trains_cities/<%= train.train_id %>"><strong><%= train.name %></strong> </li>
+        <% end %>
+      </ul>
+      <% else %>
+      <p>There are currently no Trains to display.</p>
+      <% end %>

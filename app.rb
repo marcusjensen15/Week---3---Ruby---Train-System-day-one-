@@ -67,6 +67,8 @@ end
 #this shows the rider view and all the stops
 get ('/home/rider') do
   @stops = Stop.all
+  @trains = Train.all
+  @cities = City.all
   erb(:rider)
 end
 
@@ -215,3 +217,23 @@ patch ('/home/operators/stops/:stop_id') do
   erb(:operator)
 
 end
+
+#this will delete a specific route
+
+delete('/home/operators/stops/:stop_id')do
+  @stop = Stop.find(params[:stop_id].to_i())
+  @stop.delete()
+  @trains = Train.all
+  @cities = City.all
+  @stops= Stop.all
+
+  erb(:operator)
+end
+
+#This will show you the trains that go to a specific city
+
+# get '/home/operator/cities_trains/:city_id' do
+#
+#
+#
+# end

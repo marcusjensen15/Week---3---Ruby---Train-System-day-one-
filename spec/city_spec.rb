@@ -94,6 +94,19 @@ describe('delete_city_stops') do
   end
 end
 
+describe('trains_for_city') do
+  it("shows all of the trains for a given city") do
+    city = City.new({:name => "Oink", :city_id =>nil})
+    city.save()
+    stop3 = Stop.new(:city_name => "Oink", :train_name => "H", :time => "12", :stop_id => nil)
+    stop3.save()
+    stop2 = Stop.new(:city_name => "Oink", :train_name => "Hid", :time => "124", :stop_id => nil)
+    stop2.save()
+
+    expect(city.trains_for_city()).to(eq(["H", "Hid"]))
+  end
+end
+
 
 
 end

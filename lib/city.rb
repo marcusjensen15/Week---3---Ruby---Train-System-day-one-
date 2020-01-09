@@ -66,13 +66,24 @@ class City
     end
   end
 
-#untested method, might not have access
+
   def delete_city_stops()
     DB.exec("DELETE FROM stops WHERE city_name = '#{@name}';")
 
   end
 
+  #trains_for_city is not tested, i should have included a train id in the join table but didnt
 
+  def trains_for_city()
+
+    returned_trains = DB.exec("SELECT train_name FROM stops WHERE city_name = '#{@name}';")
+    trains = []
+    returned_trains.each do |train|
+      trains.push(train.fetch("train_name"))
+    end
+    trains
+
+  end
 
 
 
