@@ -88,6 +88,7 @@ end
 get ('/home/operator/cities/:city_id')do
 
   @city = City.find(params[:city_id].to_i())
+  @trains = @city.trains_for_city()
 
   erb(:city)
 
