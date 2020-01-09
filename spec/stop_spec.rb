@@ -40,6 +40,19 @@ describe('delete') do
   end
 end
 
+describe('delete_city_stops') do
+  it("allows the user to delete all of the stops for a given city") do
+    stop = Stop.new(:city_name => "Chicago", :train_name => "Hi", :time => "12", :stop_id => nil)
+    stop.save()
+    stop3 = Stop.new(:city_name => "Chicago", :train_name => "H", :time => "12", :stop_id => nil)
+    stop3.save()
+    stop2 = Stop.new(:city_name => "Chicagox", :train_name => "Hid", :time => "124", :stop_id => nil)
+    stop2.save()
+    stop.delete_city_stops()
+    expect(Stop.all).to(eq([stop2]))
+  end
+end
+
 describe('all') do
   it("show all saved trains") do
     stop = Stop.new(:city_name => "Chicago", :train_name => "Hi", :time => "12", :stop_id => nil)
