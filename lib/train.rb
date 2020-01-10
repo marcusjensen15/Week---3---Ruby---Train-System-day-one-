@@ -60,9 +60,23 @@ class Train
     end
   end
 
-  #untested method, might not have access
+
     def delete_train_stops()
       DB.exec("DELETE FROM stops WHERE train_name = '#{@name}';")
+
+    end
+
+
+    #gets all of the cities for a given train (no test for this method)
+
+    def cities_for_train()
+
+      returned_cities = DB.exec("SELECT city_name FROM stops WHERE train_name = '#{@name}';")
+      cities = []
+      returned_cities.each do |city|
+        cities.push(city.fetch("city_name"))
+      end
+      cities
 
     end
 

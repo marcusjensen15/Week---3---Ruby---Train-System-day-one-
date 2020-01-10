@@ -72,10 +72,11 @@ get ('/home/rider') do
   erb(:rider)
 end
 
-#this shows the page on the operator view for a specific train id
+#this shows the page on the operator view for a specific train id (cities for train might not work)
 
 get ('/home/operator/trains/:train_id')do
   @train = Train.find(params[:train_id].to_i())
+  @cities = @train.cities_for_train()
 
   erb(:train)
 

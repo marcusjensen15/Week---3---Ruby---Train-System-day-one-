@@ -15,7 +15,7 @@
   <% if @cities %>
   <ul>
     <% @cities.each do |city| %>
-    <li><a href="/home/operator/cities_trains/<%= city.city_id %>"><strong><%= city.name %></strong> </li>
+    <li><a href="/home/operator/cities/<%= city.city_id %>"><strong><%= city.name %></strong> </li>
       <% end %>
     </ul>
     <% else %>
@@ -29,7 +29,7 @@
     <% if @trains %>
     <ul>
       <% @trains.each do |train| %>
-      <li><a href="/home/operator/trains_cities/<%= train.train_id %>"><strong><%= train.name %></strong> </li>
+      <li><a href="/home/operator/trains/<%= train.train_id %>"><strong><%= train.name %></strong> </li>
         <% end %>
       </ul>
       <% else %>

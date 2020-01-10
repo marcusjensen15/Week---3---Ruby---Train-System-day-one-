@@ -1,6 +1,18 @@
 <h4>Train Name: <%= @train.name %></h4>
 <h5>Train ID: <%= @train.train_id %></h5>
 
+<h1>Here are some cities that <%= @train.name %> goes to:</h1>
+
+<% if @cities %>
+<ul>
+  <% @cities.each do |city| %>
+  <li><strong><%= city %></strong> </li>
+    <% end %>
+  </ul>
+  <% else %>
+  <p>There are currently no cities to display.</p>
+  <% end %>
+
 
 <p><a href="/home/operator/trains/<%= @train.train_id %>/edit">Edit Train Name</a></p>
-<a href="/home/operator/">Return to Operator Home</a>
+<a href="/home/operator">Return to Operator Home</a>
